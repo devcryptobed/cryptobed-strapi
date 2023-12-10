@@ -1,0 +1,81 @@
+{
+  "kind": "collectionType",
+  "collectionName": "virtual_accounts",
+  "info": {
+    "singularName": "virtual-account",
+    "pluralName": "virtual-accounts",
+    "displayName": "VirtualAccount",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "accountId": {
+      "type": "string",
+      "unique": true,
+      "required": true
+    },
+    "accountBalance": {
+      "type": "string",
+      "required": true,
+      "default": "0"
+    },
+    "availableBalance": {
+      "type": "string",
+      "required": true,
+      "default": "0"
+    },
+    "currency": {
+      "type": "enumeration",
+      "enum": [
+        "USDT",
+        "USDC"
+      ],
+      "required": true,
+      "default": "USDT"
+    },
+    "frozen": {
+      "type": "boolean",
+      "default": false,
+      "required": true
+    },
+    "active": {
+      "type": "boolean",
+      "default": false,
+      "required": true
+    },
+    "customerId": {
+      "type": "string",
+      "required": true
+    },
+    "accountNumber": {
+      "type": "string",
+      "required": true
+    },
+    "accountCode": {
+      "type": "string",
+      "required": false
+    },
+    "accountingCurrency": {
+      "type": "string",
+      "required": true
+    },
+    "xpub": {
+      "type": "string"
+    },
+    "user": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::users-permissions.user",
+      "mappedBy": "virtual_account"
+    },
+    "payments": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::payment.payment",
+      "mappedBy": "hostVirtualAccount"
+    }
+  }
+}

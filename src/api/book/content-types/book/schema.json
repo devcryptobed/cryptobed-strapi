@@ -1,0 +1,86 @@
+{
+  "kind": "collectionType",
+  "collectionName": "books",
+  "info": {
+    "singularName": "book",
+    "pluralName": "books",
+    "displayName": "Book",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "host": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "books"
+    },
+    "stay": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::stay.stay"
+    },
+    "from": {
+      "type": "date",
+      "required": true
+    },
+    "to": {
+      "type": "date"
+    },
+    "priceNight": {
+      "type": "float",
+      "min": 0,
+      "required": false
+    },
+    "total": {
+      "type": "float",
+      "required": false,
+      "min": 0,
+      "private": true
+    },
+    "guestAdults": {
+      "type": "integer",
+      "min": 0,
+      "required": true,
+      "default": 0
+    },
+    "guestChildren": {
+      "type": "integer",
+      "required": true,
+      "min": 0,
+      "default": 0
+    },
+    "guestInfants": {
+      "type": "integer",
+      "required": true,
+      "min": 0,
+      "default": 0
+    },
+    "guestAddress": {
+      "type": "string",
+      "required": true
+    },
+    "payment": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::payment.payment",
+      "mappedBy": "book"
+    },
+    "nights": {
+      "type": "integer"
+    },
+    "checkInTime": {
+      "type": "time",
+      "default": "13:00",
+      "required": true
+    },
+    "checkOutTime": {
+      "type": "time",
+      "required": true,
+      "default": "10:00"
+    }
+  }
+}

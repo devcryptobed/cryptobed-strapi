@@ -1,0 +1,132 @@
+{
+  "kind": "collectionType",
+  "collectionName": "payments",
+  "info": {
+    "singularName": "payment",
+    "pluralName": "payments",
+    "displayName": "payment",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "hostAddress": {
+      "type": "string",
+      "required": true
+    },
+    "guestAddress": {
+      "type": "string",
+      "required": true
+    },
+    "book": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::book.book",
+      "inversedBy": "payment"
+    },
+    "status": {
+      "type": "enumeration",
+      "enum": [
+        "success",
+        "rejected",
+        "in-process",
+        "claimed-by-guest",
+        "claimed-by-host",
+        "waiting-for-payment"
+      ],
+      "default": "waiting-for-payment"
+    },
+    "depositAddress": {
+      "type": "string",
+      "unique": false,
+      "required": true
+    },
+    "bookTotalAmount": {
+      "type": "float"
+    },
+    "fee": {
+      "type": "float"
+    },
+    "depositAmount": {
+      "type": "float",
+      "default": 0
+    },
+    "releaseDepositTime": {
+      "type": "float"
+    },
+    "releaseHostTime": {
+      "type": "float"
+    },
+    "contractABI": {
+      "type": "json"
+    },
+    "contractAddress": {
+      "type": "string"
+    },
+    "txHash": {
+      "type": "string"
+    },
+    "coin": {
+      "type": "string",
+      "required": true
+    },
+    "releaseStatus": {
+      "type": "enumeration",
+      "enum": [
+        "released",
+        "pending",
+        "in-process",
+        "waiting-to-release-time"
+      ]
+    },
+    "releaseTxHash": {
+      "type": "string"
+    },
+    "successDate": {
+      "type": "datetime"
+    },
+    "amount": {
+      "type": "biginteger"
+    },
+    "hostVirtualAccount": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::virtual-account.virtual-account",
+      "inversedBy": "payments"
+    },
+    "splitVirtualPaymentsIds": {
+      "type": "json"
+    },
+    "virtualBlockedAmountId": {
+      "type": "string",
+      "required": false
+    },
+    "hostRevenueAmount": {
+      "type": "float",
+      "default": 0,
+      "required": true
+    },
+    "platformRevenue": {
+      "type": "float"
+    },
+    "releaseDepositStatus": {
+      "type": "enumeration",
+      "enum": [
+        "pending",
+        "released",
+        "in-process",
+        "blocked",
+        "waiting-to-release-time"
+      ],
+      "default": "pending",
+      "required": true
+    },
+    "cleaningServiceFee": {
+      "type": "float",
+      "default": 0,
+      "min": 0
+    }
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "name": "cryptobed-strapi",
+  "private": true,
+  "version": "0.1.0",
+  "description": "A Strapi application",
+  "scripts": {
+    "dev": "strapi develop",
+    "start": "strapi start",
+    "build": "strapi build",
+    "strapi": "strapi"
+  },
+  "devDependencies": {},
+  "dependencies": {
+    "@strapi/plugin-documentation": "^4.10.1",
+    "@strapi/plugin-graphql": "4.10.1",
+    "@strapi/plugin-i18n": "4.10.1",
+    "@strapi/plugin-users-permissions": "4.10.1",
+    "@strapi/provider-upload-cloudinary": "^4.11.0",
+    "@strapi/strapi": "4.10.1",
+    "better-sqlite3": "8.0.1",
+    "crypto": "^1.0.1",
+    "date-fns": "^2.30.0",
+    "date-fns-tz": "^2.0.0",
+    "ethers": "^6.6.2",
+    "pg": "^8.11.0",
+    "pg-connection-string": "^2.6.0",
+    "strapi-provider-plugin-mandrill": "^1.0.3",
+    "web3": "^4.0.2"
+  },
+  "author": {
+    "name": "A Strapi developer"
+  },
+  "strapi": {
+    "uuid": "2ac146a3-aa2b-4092-b627-0ea2f88d0569"
+  },
+  "engines": {
+    "node": "18.x.x",
+    "npm": ">=6.0.0"
+  },
+  "license": "MIT"
+}

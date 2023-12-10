@@ -1,0 +1,13 @@
+{
+  "collectionName": "components_utils_available_dates",
+  "info": {
+    "displayName": "DateComponent",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "timestamp": {
+      "type": "biginteger"
+    }
+  }
+}

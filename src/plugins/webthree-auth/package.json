@@ -1,0 +1,28 @@
+{
+  "name": "webthree-auth",
+  "version": "1.0.0",
+  "description": "This is the description of the plugin.",
+  "strapi": {
+    "name": "webthree-auth",
+    "description": "Description of Webthree Auth plugin",
+    "kind": "plugin",
+    "displayName": "Webthree Auth"
+  },
+  "dependencies": {
+    "crypto": "^1.0.1",
+    "ethers": "^6.6.2"
+  },
+  "author": {
+    "name": "A Strapi developer"
+  },
+  "maintainers": [
+    {
+      "name": "A Strapi developer"
+    }
+  ],
+  "engines": {
+    "node": ">=12.x.x <=16.x.x",
+    "npm": ">=6.0.0"
+  },
+  "license": "MIT"
+}
