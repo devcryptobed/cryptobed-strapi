@@ -61,7 +61,7 @@ Start your Strapi application with autoReload enabled. [Learn more](https://docs
 
 Prerequisites:
 
-- Node JS 18
+- Node JS 18.
 - NVM Node version manager (Optional)
 
 * Install dependencies
