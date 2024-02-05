@@ -127,7 +127,7 @@ export default factories.createCoreController(
             virtualAccount.accountId
           );
 
-        const tokenData = usdtMapping[BLOCKCHAINS.ETH];
+        const tokenData = usdtMapping[BLOCKCHAINS.POLYGON];
 
         await strapi.db.query("api::payment.payment").create({
           data: {

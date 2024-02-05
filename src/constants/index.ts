@@ -435,7 +435,7 @@ export const usdtMapping: Record<BLOCKCHAINS, TokenData> = {
   },
   [BLOCKCHAINS.POLYGON]: {
     // Mainet
-    address: "0xdAC17F958D2ee523a2206206994597C13D831ec7",
+    address: "0xc2132D05D31c914a87C6611C10748AEb04B58e8F",
     ABI: [
       {
         constant: true,
