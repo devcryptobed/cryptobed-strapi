@@ -1,4 +1,5 @@
-const { ethers } = require("ethers");
+const { ethers, JsonRpcProvider } = require("ethers");
+const ambire = require("@ambire/signature-validator");
 const crypto = require("crypto");
 
 module.exports = {
@@ -101,17 +102,22 @@ module.exports = {
       .findOne({ where: { address } });
     if (!user) return false;
 
+    const provider = new JsonRpcProvider("https://polygon-rpc.com");
+
     const message = "Your authentication token : " + user.token;
-    let safeAccount = null;
-    let safeAddress = null;
+
     try {
-      const account = ethers.verifyMessage(message, signature);
-      safeAccount = ethers.getAddress(account);
-      safeAddress = ethers.getAddress(address);
+      const verify = await ambire.verifyMessage({
+        signer: address,
+        message,
+        signature,
+        // this is needed so that smart contract signatures can be verified
+        provider,
+      });
+
+      return verify;
     } catch (e) {
       return false;
     }
-
-    return safeAccount === safeAddress;
   },
 };
