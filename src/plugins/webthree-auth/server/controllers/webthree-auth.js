@@ -1,6 +1,5 @@
 "use strict";
 
-const { ethers } = require("ethers");
 const { sanitize } = require("@strapi/utils");
 
 module.exports = {
@@ -66,9 +65,10 @@ module.exports = {
       .service("webthreeAuthService")
       .sanitizeAddress(ctx.params.address);
     if (!address) {
+      ctx.status = 404;
       ctx.send({
         success: false,
-        error: "Invalid address",
+        error: "Address not found",
       });
       return;
     }
@@ -78,6 +78,7 @@ module.exports = {
       .query("plugin::users-permissions.user")
       .findOne({ where: { address } });
     if (!user) {
+      ctx.status = 404;
       ctx.send({
         success: false,
         error: "User not found",
@@ -91,6 +92,7 @@ module.exports = {
       .service("webthreeAuthService")
       .verifySignature(address, ctx.params.signature);
     if (!signatureIsValid) {
+      ctx.status = 401;
       ctx.send({
         success: false,
         error: "Invalid signature",
