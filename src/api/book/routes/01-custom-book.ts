@@ -10,5 +10,10 @@ export default {
       path: "/books/host",
       handler: "book.findUserHostBookings",
     },
+    {
+      method: "GET",
+      path: "/books/:id/me",
+      handler: "book.findUserBooking",
+    },
   ],
 };
