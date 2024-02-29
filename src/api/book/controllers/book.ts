@@ -101,7 +101,7 @@ export default factories.createCoreController(
         if (!virtualAccount?.id) {
           const virtualAccountResponse =
             await tatumService.createVirtualAccount({
-              currency: stay.preferredCoin.toUpperCase(),
+              currency: `${stay.preferredCoin.toUpperCase()}_MATIC`,
               customer: {
                 externalId,
                 accountingCurrency: "USD",
