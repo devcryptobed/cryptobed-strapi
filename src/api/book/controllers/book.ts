@@ -189,6 +189,29 @@ export default factories.createCoreController(
       }
     },
 
+    async findUserBooking(ctx) {
+      try {
+        const { username } = ctx.state.user;
+        const { id } = ctx.params;
+        const sanitizedQueryParams = await this.sanitizeQuery(ctx);
+        const service = strapi.service("api::book.book");
+        // @ts-ignore
+        const book = await service.findOne(id, {
+          ...sanitizedQueryParams,
+          filters: {
+            guestAddress: username,
+          },
+        });
+
+        const sanitizedResult = await this.sanitizeOutput(book, ctx);
+
+        return sanitizedResult;
+      } catch (error) {
+        ctx.status = 500;
+        return { message: error.message };
+      }
+    },
+
     async findUserHostBookings(ctx) {
       try {
         const { username } = ctx.state.user;
